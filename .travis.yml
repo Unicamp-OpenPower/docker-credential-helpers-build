@@ -1,21 +1,21 @@
-os: linux-ppc64le
 dist: trusty
+os: 
+  - linux-ppc64le
 sudo: required
 language: go
 go:
-  - 1.12.x
-addons:
-  apt:
-    packages:
-      - libsecret-1-dev
-      - pass
-
- script:
-  - cd $GOPATH/src/github.com  
+- "1.12.x"
+  addons:
+    apt:
+      packages:
+        - libsecret-1-dev
+        - pass
+        
+script:
+  - cd $GOPATH/src/github.com
   - mkdir docker
   - cd docker
   - git clone https://github.com/docker/docker-credential-helpers.git
   - cd docker-credentials-helpers
   - make secretservice
   - make pass
-
