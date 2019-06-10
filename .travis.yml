@@ -11,8 +11,11 @@ addons:
       - pass
 
  script:
-  - go get github.com/docker/docker-credential-helpers
-  - cd $GOPATH/docker/docker-credentials-helpers
+  - cd $GOPATH/src/github.com  
+  - mkdir docker
+  - cd docker
+  - git clone https://github.com/docker/docker-credential-helpers.git
+  - cd docker-credentials-helpers
   - make secretservice
   - make pass
 
