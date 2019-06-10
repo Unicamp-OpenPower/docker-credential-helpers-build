@@ -1,1 +1,18 @@
+os: linux-ppc64le
+dist: trusty
+sudo: required
+language: go
+go:
+  - 1.12.x
+addons:
+  apt:
+    packages:
+      - libsecret-1-dev
+      - pass
+
+ script:
+  - go get github.com/docker/docker-credential-helpers
+  - cd $GOPATH/docker/docker-credentials-helpers
+  - make secretservice
+  - make pass
 
