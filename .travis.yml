@@ -11,6 +11,6 @@ script:
   - mkdir docker
   - cd docker
   - git clone https://github.com/docker/docker-credential-helpers.git
-  - cd docker-credentials-helpers
+  - cd docker-credential-helpers
   - make secretservice
   - make pass
