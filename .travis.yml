@@ -1,6 +1,5 @@
 dist: trusty
-os: 
-  - linux-ppc64le
+os: linux-ppc64le
 sudo: required
 language: go
 go:
