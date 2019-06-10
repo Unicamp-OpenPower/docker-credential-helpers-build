@@ -4,9 +4,6 @@
   sudo: required
   language: go
   dist: trusty
-  osx_image: xcode10.1
-  notifications:
-    email: false
   go:
     - 1.12.x
   addons:
@@ -15,18 +12,8 @@
         - libsecret-1-dev
         - pass
         
-  before_script:
-    - cd ..
-    - rm -rf -f docker-credential-helpers
-    - git clone https://github.com/docker/docker-credential-helpers.git
-    - cd docker-credential-helpers
-  
-    - make deps
-    - "export DISPLAY=:99.0"
-    - sh ci/before_script_linux.sh
-    - make validate
-    
-  script: make test
-
-  before_deploy:
-    - sh ci/before_deploy.sh
+   script:
+    - go get github.com/docker/docker-credential-helpers
+    - cd $GOPATH/docker/docker-credentials-helpers
+    - make secretservice
+    - make pass
